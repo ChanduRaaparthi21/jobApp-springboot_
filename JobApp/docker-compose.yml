@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"             # Maps container's port 8080 to host's port 8080
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: chandu         # Database name
+      POSTGRES_USER: chandu221299 # Default username
+      POSTGRES_PASSWORD: chandu221299 # Default password
+    ports:
+      - "5432:5432"              # Maps container's port 5432 to host's port 5432

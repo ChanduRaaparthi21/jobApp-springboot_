@@ -3,7 +3,16 @@ package com.chandu.JobApp.model;
 import java.util.Arrays;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Job {
+	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
     private int postId;
     private String postProfile;
     private String postDesc;
