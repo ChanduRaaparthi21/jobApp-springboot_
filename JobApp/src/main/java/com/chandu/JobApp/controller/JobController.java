@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-
+//@RestController
 public class JobController {
 
     @Autowired
@@ -43,6 +43,7 @@ public class JobController {
         jobService.saveJob(job);
         return "redirect:/jobs"; // Redirects to the jobs list after adding
     }
+
     
     @GetMapping({"/","home"})
     public String home(){

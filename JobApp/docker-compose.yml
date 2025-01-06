@@ -5,6 +5,16 @@ services:
     build: .
     ports:
       - "8080:8080"             # Maps container's port 8080 to host's port 8080
+    networks:
+      - s-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/chandu # Connect to the 'postgres' service
+      SPRING_DATASOURCE_USERNAME: chandu221299
+      SPRING_DATASOURCE_PASSWORD: chandu221299
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_DATABASE-PLATFORM: org.hibernate.dialect.PostgreSQLDialect
+    depends_on:
+      - postgres                # Ensure the app service waits for PostgreSQL to start
 
   postgres:
     image: postgres:latest
@@ -14,3 +24,8 @@ services:
       POSTGRES_PASSWORD: chandu221299 # Default password
     ports:
       - "5432:5432"              # Maps container's port 5432 to host's port 5432
+    networks:
+      - s-network
+networks:
+  s-network:
+    driver: bridge
